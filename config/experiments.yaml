@@ -1,0 +1,131 @@
+# config/experiments.yaml
+# -----------------------------------------------------------------------------
+# Single source of truth for every parameter, sweep range and RNG seed used by
+# Papers 1, 2 and 3. All drivers / simulators / benchmarks read from this file
+# so results are reproducible and "Reproducibility notes" can just cite it.
+#
+# Conventions
+# -----------
+# - `seeds`            : list of RNG seeds; every experiment runs once per seed.
+# - `*_grid`           : discrete values used in grid searches.
+# - `repetitions`      : how many times to re-run a single configuration.
+# - times in ms unless otherwise noted; arrival windows are abstract time units.
+# -----------------------------------------------------------------------------
+
+global:
+  seeds:        [1, 2, 3, 4, 5]
+  repetitions:  10           # default for any (paper, config) tuple
+  timeout_s:    600          # safety timeout on any single benchmarked process
+  output_dir:   results      # per-paper results land in <paper>/<output_dir>/
+
+
+# -----------------------------------------------------------------------------
+# Paper 1 -- Shell Scripts (Part I)
+# -----------------------------------------------------------------------------
+paper1:
+  repetitions: 20            # runs per (script, input) combo
+
+  # The 10 scripts chosen from material sections 1, 2 and 3.
+  # Pre-checked by the doc: mailformat, rn, blank-rename, encryptedpw,
+  # collatz, days-between, game_of_life. Add 3 more to reach 10.
+  scripts:
+    - mailformat
+    - rn
+    - blank-rename
+    - encryptedpw
+    - collatz
+    - days-between
+    - game_of_life
+    - primes                 # pairs naturally with the CRT case study
+    - makedict
+    - tree
+
+  # Generic size buckets for scripts that scale with input.
+  input_sizes:
+    small:  100
+    medium: 1000
+    large:  10000
+    xlarge: 100000
+
+  # Per-script knobs (only used by scripts that take these).
+  collatz_seeds:             [27, 97, 871, 6171, 27114424]
+  game_of_life_generations:  [10, 50, 200]
+  mailformat_line_widths:    [40, 70, 120]
+  days_between_pairs:
+    - ["1/1/1900",  "1/1/2000"]
+    - ["6/15/1985", "12/31/2025"]
+    - ["3/1/1600",  "5/13/2026"]
+
+  # CRT case-study: section-2(a) modular-arithmetic loop.
+  crt_case_study:
+    moduli:    [5, 7, 9]
+    residues:  [3, 4, 5]
+    upper_bound: 10000
+
+
+# -----------------------------------------------------------------------------
+# Paper 2 -- Concurrency (Part II §1)
+# -----------------------------------------------------------------------------
+paper2:
+  languages: [pthreads, java]    # both implementations are compared
+  repetitions: 10                # runs per config (per language)
+
+  producer_consumer:
+    N_buffer:           [1, 4, 16, 64, 256]
+    M_producers:        [1, 2, 4, 8, 16]
+    K_consumers:        [1, 2, 4, 8, 16]
+    items_per_producer: 10000    # total items each producer must push
+    producer_delay_us:  [0, 10, 100]    # 0 = busy, otherwise sleep range
+    consumer_delay_us:  [0, 10, 100]
+
+  dining_philosophers:
+    P_philosophers:     [5, 10, 20, 50, 100]
+    algorithms:         [monitor, semaphore, resource_hierarchy]
+    run_seconds:        10
+    think_delay_ms:     [10, 50]   # uniform random in [min, max]
+    eat_delay_ms:       [10, 50]
+    deadlock_detect_ms: 2000       # mark run as deadlocked if no progress for this long
+
+  # Variables explicitly tracked by metric:
+  #   throughput, latency, context_switches, cpu_pct, max_rss_kb, deadlock_frequency
+
+
+# -----------------------------------------------------------------------------
+# Paper 3 -- Scheduling & Queuing (Part II §2 + §3)
+# -----------------------------------------------------------------------------
+paper3:
+
+  # ----- MLFQ simulation (variants A and B) ---------------------------------
+  mlfq:
+    N_processes:         [100, 500, 1000, 5000]
+    M_arrival_windows:   [50, 100, 200]
+    burst_range:         [10, 1000]        # uniform random per process
+    monte_carlo_trials:  300               # doc allows 100–500
+    total_level_time_ms: 100               # L1 + L2 + L3 = 100
+
+    Q1_grid: [2, 4, 6, 8, 10, 12, 16, 20]  # quantum for level-0 RR
+    Q2_grid: [8, 12, 16, 24, 32, 48]       # quantum for level-1 RR
+    L1_grid: [10, 20, 30, 40, 50]          # time allotment for level-0
+    L2_grid: [20, 30, 40, 50, 60]          # time allotment for level-1
+    # L3 is derived: L3 = total_level_time_ms - L1 - L2
+
+    # Variant B: level 3 splits between SJF (T%) and FCFS (100-T%).
+    T_grid: [0, 10, 25, 50, 75, 90, 100]
+
+    # Metrics optimized: throughput (max), turnaround (min), waiting (min), response (min)
+
+  # ----- Queuing models (M/M/1 and M/M/S) ----------------------------------
+  queuing:
+    R_server_rates:        [1, 2, 5, 10, 20]    # processes served per unit time
+    S_servers:             [1, 2, 4, 8]         # for the M/M/S case
+    distributions:         [uniform, exponential, poisson]
+    steady_state_arrivals: 100000               # how many arrivals to simulate -> ∞
+    warmup_arrivals:       5000                 # discard these before measuring
+
+    # "Constant over time" sweep: N, M, R held fixed during a run.
+    constant_grid:
+      N: [100, 500, 1000]
+      M: [50, 100, 200]
+      R: [1, 5, 10]
+
+    # Quantities reported: rho (utilization), L, Lq, W, Wq, Pn, system_stability
