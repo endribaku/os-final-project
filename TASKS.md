@@ -16,9 +16,10 @@ Tags: `@endri`, `@hazis`, `@both`.
       heatmap, surface3d, bar_compare).
 - [x] @both  Pin parameter ranges + seeds in `config/experiments.yaml`.
 - [ ] @both  Finalize `ENVIRONMENT.md` (paste version output for both machines).
-- [ ] @both  Decide Word vs Overleaf vs Google Doc for the master report; create
-      the paper template (10 pt, 1-col, single-spaced, with Abstract / Keywords /
-      Methodology / Results / Reproducibility / Appendix skeletons).
+- [x] @both  Decide Word vs Overleaf vs Google Doc for the master report.
+      **Chosen: Microsoft Word.** Section outlines in each `report/OUTLINE.md`.
+- [ ] @both  Create `paper1.docx`, `paper2.docx`, `paper3.docx` from a Word
+      template (10 pt, one-column, single-spaced) in the three `report/` folders.
 - [ ] @both  Create GitHub repo (private), push the scaffold, both clone.
 
 ---
