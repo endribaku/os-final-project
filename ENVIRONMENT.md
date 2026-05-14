@@ -16,7 +16,7 @@ their own machine's section once.
 - **C compiler:** gcc 13+ (for Paper 2 pthreads code).
 - **Required system tools:** GNU `time` (verbose `-v` support), `perf`,
   `strace`, `top`, `wodim`/`setterm` for some Paper 1 scripts.
-- **Python deps:** `numpy`, `matplotlib`, `pyyaml`.
+- **Python deps:** `numpy`, `matplotlib`, `pyyaml`, `pandas`.
 
 Install bundle (Ubuntu):
 
@@ -24,7 +24,7 @@ Install bundle (Ubuntu):
 sudo apt update
 sudo apt install -y build-essential time linux-tools-common linux-tools-generic \
                     strace bsdmainutils openjdk-21-jdk python3 python3-pip
-pip install --user numpy matplotlib pyyaml
+pip install --user numpy matplotlib pyyaml pandas
 ```
 
 ## Recorded versions

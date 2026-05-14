@@ -58,32 +58,46 @@ Tags: `@endri`, `@hazis`, `@both`.
 ## 2. Paper 2 — Concurrency (Part II §1)  *(owner: @endri)*
 
 ### Producer–Consumer (bounded buffer)
-- [ ] @endri  Rename `paper2-concurrency/pc/python/` → `pc/java/`.
-- [ ] @endri  Implement P–C in POSIX pthreads (`pc/pthreads/`).
-- [ ] @endri  Implement P–C in Java (`pc/java/`).
-- [ ] @endri  Parameterize: N (buffer), M (producers), K (consumers); read
+- [x] @endri  Rename `paper2-concurrency/pc/python/` → `pc/java/`.
+- [x] @endri  Implement P–C in POSIX pthreads (`pc/pthreads/producer_consumer.c` + Makefile).
+- [x] @endri  Implement P–C in Java, monitor variant (`pc/java/ProducerConsumer.java`).
+- [x] @endri  Parameterize: N (buffer), M (producers), K (consumers); read
       ranges from `config/experiments.yaml`.
-- [ ] @endri  Sweep driver (Python) calling `common/bench.py`; dumps
-      `paper2-concurrency/results/pc_<lang>.csv`.
+- [x] @endri  Sweep driver (Python) calling `common/bench.py`; dumps
+      `paper2-concurrency/results/pc_sweep.csv` (`drivers/sweep_pc.py`).
 
 ### Dining Philosophers
-- [ ] @endri  Rename `paper2-concurrency/dp/python/` → `dp/java/`.
-- [ ] @endri  Implement DP in POSIX pthreads — testbed algorithms (monitor /
-      semaphore / resource_hierarchy).
-- [ ] @endri  Implement DP in Java — Baeldung-style + the lecture monitor
-      solution (`monitor DiningPhilosophers { state[5]; ... }`).
-- [ ] @endri  Parameterize to N philosophers; deadlock detection (no-progress
-      window from config).
-- [ ] @endri  Sweep driver; dumps `paper2-concurrency/results/dp_<lang>_<algo>.csv`.
+- [x] @endri  Rename `paper2-concurrency/dp/python/` → `dp/java/`.
+- [x] @endri  Implement DP in POSIX pthreads — testbed algorithms:
+      `dp/pthreads/dphil_2.c` (naive + watchdog), `dphil_4.c` (asymmetric /
+      resource_hierarchy), `dphil_5.c` (monitor with condvars); shared
+      helpers in `dp_common.{h,c}`; Makefile.
+- [x] @endri  Implement DP in Java — lecture monitor (`DiningMonitor.java`),
+      semaphore-per-fork + room (`DiningSemaphore.java`), Baeldung-style
+      asymmetric (`DiningHierarchy.java`); shared `DPArgs.java` + `DPStats.java`.
+- [x] @endri  Parameterize to N philosophers (`--N` CLI); deadlock detection
+      via no-progress window (`--deadlock-window-ms`).
+- [x] @endri  Sweep driver; dumps `paper2-concurrency/results/dp_sweep.csv`
+      (`drivers/sweep_dp.py`). Schema includes `impl` column so each
+      (lang, algo) is filterable in pandas/duckdb.
 
 ### Analysis + plots
-- [ ] @endri  Graphs vs N/M/K/P (time, CPU, memory, throughput, latency,
-      context switches, deadlock frequency) into `paper2-concurrency/figures/`.
-- [ ] @endri  Comparative analysis: POSIX vs Java, locks vs monitors vs
-      semaphores, resource hierarchy effect.
-- [ ] @endri  Stress tests.
-- [ ] @endri  Optimization proposal (lock-free idea or adaptive buffer
-      sizing) — write it; prototype + benchmark if time.
+- [x] @endri  Graphs vs N/M/K/P (time, CPU, memory, throughput, latency,
+      context switches, deadlock frequency) — implemented in
+      `drivers/plot_pc.py` + `plot_dp.py` writing to
+      `paper2-concurrency/figures/{pc,dp}/`.
+- [x] @endri  Comparative analysis (POSIX vs Java, locks vs monitors vs
+      semaphores, resource hierarchy effect) — covered by the
+      `impl_bar_comparison.png` panels + per-impl lines in every figure.
+- [x] @endri  Stress tests — `drivers/stress.py` defines 7 preset configs
+      (`pc-tiny`, `pc-asym-prod`, `pc-asym-cons`, `pc-long`, `dp-deadlock`,
+      `dp-large-N`, `dp-starvation`) writing per-test CSVs to
+      `paper2-concurrency/results/stress/`. Wrapper:
+      `drivers/stress_tests.sh`.
+- [x] @endri  Optimization proposal — Vyukov lock-free MPMC ring buffer
+      (`pc/java/ProducerConsumerLockFree.java`), wired into `sweep_pc.py`
+      + colour-coded in `_plot_common.py`. Adaptive buffer discussed as
+      future work. Full write-up: [`OPTIMIZATION.md`](paper2-concurrency/OPTIMIZATION.md).
 
 ### Writing  (5,000–8,000 words, 10–15 pp)
 - [ ] @endri  Intro · Related work · Methodology · Experimental design ·
