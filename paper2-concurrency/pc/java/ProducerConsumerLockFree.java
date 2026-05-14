@@ -16,8 +16,11 @@
  *   - HIGHER CPU% (busy-wait when empty/full)
  *
  * Constraint: buffer capacity is rounded up to the next power of two so the
- * cell index can be a single AND with a mask. The effective capacity is
- * reported as `effective_N` in the output JSON.
+ * cell index can be a single AND with a mask. Additionally, capacity is
+ * clamped to a minimum of 2: with capacity == 1 the Vyukov sequence-number
+ * scheme degenerates (post-enqueue and post-dequeue sequence values become
+ * equal for the single slot, allowing a producer to race past an unread
+ * value). The effective capacity is reported as `effective_N` in the JSON.
  *
  * CLI is identical to ProducerConsumer.java so sweep_pc.py / plot_pc.py
  * treat both uniformly.
@@ -52,7 +55,9 @@ public class ProducerConsumerLockFree {
         private final AtomicLong dequeuePos = new AtomicLong(0);
 
         MPMCQueue(int requestedCapacity) {
-            int cap = roundUpPow2(requestedCapacity);
+            // Clamp to >= 2 before rounding: cap == 1 breaks the algorithm
+            // (post-enq seq == post-deq seq for the single slot).
+            int cap = Math.max(2, roundUpPow2(requestedCapacity));
             this.buffer = new Cell[cap];
             this.mask   = cap - 1;
             for (int i = 0; i < cap; i++) {

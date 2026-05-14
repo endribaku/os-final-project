@@ -84,9 +84,14 @@ Java monitor, Java lock-free, C pthreads-with-mutex — for the
 
 ### Caveats / honest limitations
 
-- **Capacity is a power of two.** If you pass `--N 50` the queue rounds up
-  to 64 and reports `effective_N` in the output JSON. This is a property
-  of the mask trick, not a defect; we'd mention it in the paper.
+- **Capacity is a power of two, and ≥ 2.** If you pass `--N 50` the queue
+  rounds up to 64; if you pass `--N 1` it clamps to 2. With capacity 1
+  the Vyukov sequence-number scheme degenerates — post-enqueue and
+  post-dequeue sequence values for the single slot become equal, which
+  lets a producer race past a still-unread value. The other PC variants
+  (monitor + pthreads) DO honour N=1 verbatim, so a head-to-head
+  comparison at N=1 is still meaningful; the lock-free row at that point
+  uses `effective_N: 2`.
 - **Busy-spin uses CPU.** When the queue is empty or full the spinning
   threads stay on-CPU. `Thread.onSpinWait()` (Java 9+) softens this, but
   the lock-free variant is expected to draw more CPU at low concurrency.
