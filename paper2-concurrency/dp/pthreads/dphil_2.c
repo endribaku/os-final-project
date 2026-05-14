@@ -101,22 +101,19 @@ int main(int argc, char **argv) {
 
     double wall_ms = (double)(dp_now_ns() - start) / 1e6;
 
-    if (dp_deadlocked) {
-        /* Threads are permanently stuck in pthread_mutex_lock; emit the
-         * result and exit hard so we don't deadlock joining. */
-        dp_print_json("c-pthreads-naive", &a, wall_ms, /*deadlocked=*/true, stats, g_N);
-        fflush(stdout);
-        _exit(0);
-    }
-
-    for (int i = 0; i < g_N; i++) pthread_join(thr[i], NULL);
-
-    dp_print_json("c-pthreads-naive", &a, wall_ms, /*deadlocked=*/false, stats, g_N);
-
-    for (int i = 0; i < g_N; i++) {
-        phil_stats_free(&stats[i]);
-        pthread_mutex_destroy(&forks[i]);
-    }
-    free(forks); free(stats); free(pargs); free(thr);
-    return 0;
+    /* The naive variant has TWO ways a philosopher thread can be stuck in
+     * pthread_mutex_lock when we get here:
+     *   1) dp_deadlocked == true: classic 4-condition deadlock, watchdog
+     *      detected it from no meal-progress.
+     *   2) dp_deadlocked == false but a "partial deadlock" -- some
+     *      philosophers progressing while others are permanently blocked.
+     *      Watchdog never fires because dp_last_meal_ns keeps advancing.
+     * In both cases pthread_join would hang. The naive impl is the demo
+     * of unprotected locking; clean teardown isn't a requirement. Emit
+     * the JSON and hard-exit; the OS reclaims threads, mutexes and heap.
+     */
+    dp_print_json("c-pthreads-naive", &a, wall_ms,
+                  /*deadlocked=*/(bool)dp_deadlocked, stats, g_N);
+    fflush(stdout);
+    _exit(0);
 }
