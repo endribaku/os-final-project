@@ -68,21 +68,29 @@ paper1:
 # -----------------------------------------------------------------------------
 paper2:
   languages: [pthreads, java]    # both implementations are compared
-  repetitions: 10                # runs per config (per language)
+  repetitions: 5                 # runs per config (per language)
 
+  # Reduced from the original 5x5x5x3x3 grid (1125 configs) to fit the
+  # 3-vCPU / 4 GB ARM VM in a few minutes. The retained axes still span
+  # the qualitative regimes the paper needs:
+  #   N -> small (1), medium (16), large (64) buffers
+  #   M, K -> 1..8 covers single-thread + balanced + many-producer cases
+  #   delays fixed at 0 (busy mode) for the main sweep; explore via stress.
   producer_consumer:
-    N_buffer:           [1, 4, 16, 64, 256]
-    M_producers:        [1, 2, 4, 8, 16]
-    K_consumers:        [1, 2, 4, 8, 16]
-    items_per_producer: 10000    # total items each producer must push
-    producer_delay_us:  [0, 10, 100]    # 0 = busy, otherwise sleep range
-    consumer_delay_us:  [0, 10, 100]
+    N_buffer:           [1, 4, 16, 64]
+    M_producers:        [1, 2, 4, 8]
+    K_consumers:        [1, 2, 4, 8]
+    items_per_producer: 10000
+    producer_delay_us:  [0]
+    consumer_delay_us:  [0]
 
+  # P=100 dropped from the main sweep (kept in stress for scalability).
+  # run_seconds halved from 10 -> 5 to bring the full DP sweep under 10 min.
   dining_philosophers:
-    P_philosophers:     [5, 10, 20, 50, 100]
+    P_philosophers:     [5, 10, 20, 50]
     algorithms:         [monitor, semaphore, resource_hierarchy]
-    run_seconds:        10
-    think_delay_ms:     [10, 50]   # uniform random in [min, max]
+    run_seconds:        5
+    think_delay_ms:     [10, 50]
     eat_delay_ms:       [10, 50]
     deadlock_detect_ms: 2000       # mark run as deadlocked if no progress for this long
 
