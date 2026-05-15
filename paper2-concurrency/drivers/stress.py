@@ -90,21 +90,28 @@ def dp_c_cmd(impl, *, P, dur, tmin, tmax, emin, emax, seed, dlw=5000) -> str:
 def build_stress_configs() -> list[tuple[str, str, int]]:
     cfgs: list[tuple[str, str, int]] = []
 
+    # Item counts here are intentionally small. The PC stress tests exist
+    # to expose *contention regimes*, not to measure aggregate throughput
+    # over millions of items. With 16 contending threads and a 1-slot
+    # buffer, even 2000 items/producer is plenty of signal and finishes
+    # in seconds on a 3-vCPU VM. Previous values (50k+) ran for tens of
+    # minutes per config on small ARM hosts.
+
     # 1. PC tiny buffer, max contention
     for builder in (pc_java_cmd, pc_c_cmd):
-        cfgs.append(("pc-tiny", builder(N=1, M=8, K=8, items=50_000), 5))
+        cfgs.append(("pc-tiny", builder(N=1, M=8, K=8, items=2_000), 3))
 
     # 2. asymmetric producers >> consumers
     for builder in (pc_java_cmd, pc_c_cmd):
-        cfgs.append(("pc-asym-prod", builder(N=4, M=16, K=1, items=20_000), 5))
+        cfgs.append(("pc-asym-prod", builder(N=4, M=16, K=1, items=2_000), 3))
 
     # 3. asymmetric consumers >> producers
     for builder in (pc_java_cmd, pc_c_cmd):
-        cfgs.append(("pc-asym-cons", builder(N=4, M=1, K=16, items=20_000), 5))
+        cfgs.append(("pc-asym-cons", builder(N=4, M=1, K=16, items=5_000), 3))
 
-    # 4. PC long steady-state (heavy total volume)
+    # 4. PC long steady-state (still the largest stress run, but bounded)
     for builder in (pc_java_cmd, pc_c_cmd):
-        cfgs.append(("pc-long", builder(N=64, M=4, K=4, items=1_000_000), 3))
+        cfgs.append(("pc-long", builder(N=64, M=4, K=4, items=100_000), 2))
 
     # 5. DP deadlock provocation: naive C, P=5/10/20, 10 seeds each.
     #    think=0 + long eat + tight watchdog window => high deadlock rate.
