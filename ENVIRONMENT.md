@@ -85,12 +85,46 @@ Hardware:
 ### hazis (Part I owner)
 
 ```
-<paste output here>
+uname -a
+Linux OSFinalProject 6.17.0-23-generic #23~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Tue Apr 14 16:11:48 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+
+lsb_release -a 2>/dev/null
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.04.4 LTS
+Release:	24.04
+Codename:	noble
+
+bash --version | head -n1
+GNU bash, version 5.2.21(1)-release (x86_64-pc-linux-gnu)
+
+gcc --version | head -n1
+gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+
+java --version | head -n1
+openjdk 21.0.10 2026-01-20
+
+python3 --version
+Python 3.12.3
+
+/usr/bin/time --version 2>&1 | head -n1
+time (GNU Time) UNKNOWN
+
+perf --version 2>/dev/null
+perf version 6.17.13
 ```
 
 Hardware: CPU model, cores, RAM, storage type.
 
-## Notes
+## Architecture: **aarch64 (ARM64)** — Apple Silicon host running an ARM Ubuntu gu>
+
+Hardware:
+- Host CPU: Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz
+- vCPUs allocated to VM: 2
+- RAM allocated to VM: 4096 MB (4 GB)
+- Storage: 20 GB VDI on virtio-scsi controller
+- Display/network: VMSVGA, Intel PRO/1000 MT NAT
+
+Notes
 
 - macOS dev caveat: `/usr/bin/time` is BSD time on macOS and won't support `-v`.
   Install GNU time and point `bench.py` at it:
