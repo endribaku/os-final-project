@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.env
+
+# Compiled Java
+*.class
+
+# Compiled C / build artifacts
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+
+# Paper 2 native binaries
+paper2-concurrency/pc/pthreads/producer_consumer
+paper2-concurrency/dp/pthreads/dphil_2
+paper2-concurrency/dp/pthreads/dphil_4
+paper2-concurrency/dp/pthreads/dphil_5
+
+# Editors
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Word lock files
+~$*.docx
+~$*.dotx
+
+# Ad-hoc local-only notes
+CONNECT.md
