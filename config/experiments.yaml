@@ -111,14 +111,25 @@ paper3:
     monte_carlo_trials:  300               # doc allows 100–500
     total_level_time_ms: 100               # L1 + L2 + L3 = 100
 
-    Q1_grid: [2, 4, 6, 8, 10, 12, 16, 20]  # quantum for level-0 RR
-    Q2_grid: [8, 12, 16, 24, 32, 48]       # quantum for level-1 RR
-    L1_grid: [10, 20, 30, 40, 50]          # time allotment for level-0
-    L2_grid: [20, 30, 40, 50, 60]          # time allotment for level-1
+    # Reduced from the original 8x6x5x5 grid (1056 valid configs; variant B
+    # x7 for T ~= 7400 configs => ~25 h) so the full sweep finishes in minutes,
+    # same approach as Paper 2's producer_consumer block. The retained axes
+    # still span the qualitative regimes the optimization study needs:
+    #   Q1 -> tiny (2) .. large (16) level-0 quanta
+    #   Q2 -> small (8) .. large (48) level-1 quanta
+    #   L1, L2 -> low vs high duty-cycle budgets (L3 = 100-L1-L2 stays > 0)
+    # Original grid kept here for reference:
+    #   Q1: [2,4,6,8,10,12,16,20]  Q2: [8,12,16,24,32,48]
+    #   L1: [10,20,30,40,50]       L2: [20,30,40,50,60]
+    #   T:  [0,10,25,50,75,90,100]
+    Q1_grid: [2, 6, 10, 16]                # quantum for level-0 RR
+    Q2_grid: [8, 16, 32, 48]               # quantum for level-1 RR
+    L1_grid: [20, 40]                      # time allotment for level-0
+    L2_grid: [30, 50]                      # time allotment for level-1
     # L3 is derived: L3 = total_level_time_ms - L1 - L2
 
     # Variant B: level 3 splits between SJF (T%) and FCFS (100-T%).
-    T_grid: [0, 10, 25, 50, 75, 90, 100]
+    T_grid: [0, 50, 100]
 
     # Metrics optimized: throughput (max), turnaround (min), waiting (min), response (min)
 

@@ -1,0 +1,20 @@
+### START Thu May 21 12:39:00 CEST 2026
+### MLFQ variant A
+[run_mlfq] variant=A configs=64 trials=300 N=500 M=100.0 -> /Users/endribaku/Documents/Epoka/Year 3/Second Semester/Operating Systems/os-final-project/paper3-scheduling/results/mlfq_A.csv
+  [10/64] 57.5s
+  [20/64] 124.0s
+  [30/64] 181.2s
+  [40/64] 245.2s
+  [50/64] 303.2s
+  [60/64] 392.3s
+  [64/64] 426.4s
+
+[run_mlfq] done in 426.4s. Optimal configs:
+  max throughput       =       0.0020  at Q1=2 Q2=8 L1=20 L2=30
+  min turnaround_mean  =  168771.3826  at Q1=16 Q2=16 L1=20 L2=30
+  min waiting_mean     =  168265.6066  at Q1=16 Q2=16 L1=20 L2=30
+  min response_mean    =     809.1385  at Q1=2 Q2=32 L1=40 L2=30
+### MLFQ variant B
+[run_mlfq] variant=B configs=192 trials=300 N=500 M=100.0 -> /Users/endribaku/Documents/Epoka/Year 3/Second Semester/Operating Systems/os-final-project/paper3-scheduling/results/mlfq_B.csv
+  [10/192] 483.6s
+  [20/192] 1409.5s
