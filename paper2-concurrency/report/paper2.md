@@ -1,10 +1,16 @@
 # Comparative Performance Evaluation of Multithreaded Synchronization Techniques in the Producer–Consumer and Dining Philosophers Problems
 
+::: {custom-style="Front Matter"}
 ENDRI BAKU
+:::
 
+::: {custom-style="Front Matter"}
 *Epoka University, Faculty of Architecture and Engineering, Tirana, Albania*
+:::
 
+::: {custom-style="Front Matter"}
 *(email: ebaku23@epoka.edu.al)*
+:::
 
 ::: {custom-style="Summary Heading"}
 SUMMARY
@@ -314,7 +320,7 @@ which signals a strongly right-skewed distribution: most configurations are
 slow, and a few favourable ones pull the mean up. This is the signature of
 contention sensitivity, examined in Section 6.
 
-![**Figure 1.** Producer–Consumer throughput vs buffer size N, per implementation.](../figures/pc/throughput_vs_N.png){width=3.3in}
+![**Figure 1.** Producer–Consumer throughput vs buffer size N, per implementation.](../figures/pc/throughput_vs_N.png){width=2.6in}
 
 ### 5.2 Context switches: the kernel-blocking tax
 
@@ -338,7 +344,7 @@ whichever core the scheduler picks. This single metric explains the throughput
 result: the lock-free queue spends its time moving data, while the blocking
 queues spend a large fraction of theirs entering and leaving the kernel.
 
-![**Figure 2.** Voluntary context switches vs total thread count, per implementation.](../figures/pc/ctxsw_vs_threads.png){width=3.3in}
+![**Figure 2.** Voluntary context switches vs total thread count, per implementation.](../figures/pc/ctxsw_vs_threads.png){width=2.6in}
 
 ### 5.3 CPU utilization: what lock-free costs
 
@@ -361,7 +367,7 @@ This is the fundamental lock-free trade-off stated quantitatively: the lock-free
 queue converts idle CPU cycles into throughput. On a loaded machine where those
 cycles have an alternative use, the calculus changes — see Section 9.
 
-![**Figure 3.** CPU utilization vs contention level, per implementation.](../figures/pc/cpu_vs_contention.png){width=3.3in}
+![**Figure 3.** CPU utilization vs contention level, per implementation.](../figures/pc/cpu_vs_contention.png){width=2.6in}
 
 ### 5.4 Latency
 
@@ -382,9 +388,9 @@ when only one can proceed — a "thundering herd" that inflates the tail as the
 losers re-block. The lock-free protocol has no wake-up step at all, so its tail
 is governed only by CAS-retry contention.
 
-![**Figure 4.** p95 hand-off latency vs buffer size N, per implementation.](../figures/pc/latency_p95_vs_N.png){width=3.3in}
+![**Figure 4.** p95 hand-off latency vs buffer size N, per implementation.](../figures/pc/latency_p95_vs_N.png){width=2.6in}
 
-![**Figure 5.** Producer–Consumer per-implementation comparison across all metrics.](../figures/pc/impl_bar_comparison.png){width=3.3in}
+![**Figure 5.** Producer–Consumer per-implementation comparison across all metrics.](../figures/pc/impl_bar_comparison.png){width=2.6in}
 
 ### 5.5 Dining Philosophers throughput
 
@@ -408,7 +414,7 @@ Java semaphore solution is also low (860): its room semaphore admits only
 `N − 1` philosophers, deliberately throttling concurrency to guarantee
 freedom from deadlock, and that throttle costs throughput.
 
-![**Figure 6.** Total meals vs philosopher count P, per Dining Philosophers algorithm.](../figures/dp/meals_vs_P.png){width=3.3in}
+![**Figure 6.** Total meals vs philosopher count P, per Dining Philosophers algorithm.](../figures/dp/meals_vs_P.png){width=2.6in}
 
 ### 5.6 Deadlock frequency (stress test)
 
@@ -430,7 +436,7 @@ locking, by a monitor, or by a room semaphore — is at **0%**. This is the
 Coffman circular-wait condition demonstrated empirically: removing it is not a
 performance optimization, it is a correctness requirement.
 
-![**Figure 7.** Deadlock frequency vs philosopher count P, per algorithm.](../figures/dp/deadlock_freq_vs_P.png){width=3.3in}
+![**Figure 7.** Deadlock frequency vs philosopher count P, per algorithm.](../figures/dp/deadlock_freq_vs_P.png){width=2.6in}
 
 ## 6. Scalability Study
 
@@ -514,18 +520,6 @@ indistinguishable at the top (~24 800 meals at P = 200), while the Java
 semaphore solution sustains only ~59% of that, again the price of its
 `N − 1` room limit.
 
-### 6.4 Memory
-
-Peak resident memory was effectively flat across the sweep. The JVM baseline
-(~43 MB RSS even at `M + K = 1`) dominates any per-thread cost, and the C
-implementations sit far below it; thread stacks contributed only single-digit
-megabytes even at the largest configurations. Memory is therefore not a
-discriminating axis at the scales studied here.
-
-![**Figure 8.** Peak resident memory vs buffer size N (Producer–Consumer).](../figures/pc/rss_vs_N.png){width=3.3in}
-
-![**Figure 9.** Peak resident memory vs philosopher count P (Dining Philosophers).](../figures/dp/rss_vs_P.png){width=3.3in}
-
 ## 7. Comparative Analysis
 
 ### 7.1 POSIX threads vs Java
@@ -585,15 +579,15 @@ ordered-locking idea is both the fairest solution in C and the least fair in
 Java, which means fairness here is a property of the underlying lock's wake-up
 policy (FIFO vs unfair) rather than of the high-level algorithm.
 
-![**Figure 10.** Fairness (coefficient of variation of per-philosopher meals) vs P.](../figures/dp/fairness_vs_P.png){width=3.3in}
+![**Figure 8.** Fairness (coefficient of variation of per-philosopher meals) vs P.](../figures/dp/fairness_vs_P.png){width=2.6in}
 
-![**Figure 11.** p95 philosopher wait time vs P, per algorithm.](../figures/dp/wait_p95_vs_P.png){width=3.3in}
+![**Figure 9.** p95 philosopher wait time vs P, per algorithm.](../figures/dp/wait_p95_vs_P.png){width=2.6in}
 
-![**Figure 12.** CPU utilization vs philosopher count P, per algorithm.](../figures/dp/cpu_vs_P.png){width=3.3in}
+![**Figure 10.** CPU utilization vs philosopher count P, per algorithm.](../figures/dp/cpu_vs_P.png){width=2.6in}
 
-![**Figure 13.** Voluntary context switches vs philosopher count P, per algorithm.](../figures/dp/ctxsw_vs_P.png){width=3.3in}
+![**Figure 11.** Voluntary context switches vs philosopher count P, per algorithm.](../figures/dp/ctxsw_vs_P.png){width=2.6in}
 
-![**Figure 14.** Dining Philosophers per-algorithm comparison across all metrics.](../figures/dp/impl_bar_comparison.png){width=3.3in}
+![**Figure 12.** Dining Philosophers per-algorithm comparison across all metrics.](../figures/dp/impl_bar_comparison.png){width=2.6in}
 
 ## 8. Optimization Proposal
 

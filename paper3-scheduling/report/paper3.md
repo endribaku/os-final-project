@@ -1,10 +1,16 @@
 # Optimization of Multilevel Feedback Queue Scheduling and Queueing Models Using Simulation and Analytical Techniques
 
+::: {custom-style="Front Matter"}
 ENDRI BAKU AND HAZIS VODA
+:::
 
+::: {custom-style="Front Matter"}
 *Epoka University, Faculty of Architecture and Engineering, Tirana, Albania*
+:::
 
+::: {custom-style="Front Matter"}
 *(email: ebaku23@epoka.edu.al, hvoda23@epoka.edu.al)*
+:::
 
 ::: {custom-style="Summary Heading"}
 SUMMARY
