@@ -1,0 +1,7 @@
+[makedict] START  args=0  pid=42754
+[makedict]   reading from stdin
+[makedict]   processing: '/tmp/tmp.BY3gGm0VxZ/stdin.tmp'  size=44B
+[makedict]   '/tmp/tmp.BY3gGm0VxZ/stdin.tmp' -> 9 sorted tokens  (0s)
+[makedict]   merging per-file word lists...
+[makedict] END  unique_words=8  merge_time=0s
+# Total unique words: 8

@@ -1,0 +1,51 @@
+[primes] START  N=100  pid=42580
+[primes]   is_prime(3): PRIME  divisions=0
+[primes]   is_prime(5): PRIME  divisions=0
+[primes]   is_prime(7): PRIME  divisions=0
+[primes]   is_prime(9): composite, divisor=3  divisions=1
+[primes]   is_prime(11): PRIME  divisions=1
+[primes]   is_prime(13): PRIME  divisions=1
+[primes]   is_prime(15): composite, divisor=3  divisions=1
+[primes]   is_prime(17): PRIME  divisions=1
+[primes]   is_prime(19): PRIME  divisions=1
+[primes]   is_prime(21): composite, divisor=3  divisions=1
+[primes]   is_prime(23): PRIME  divisions=1
+[primes]   is_prime(25): composite, divisor=5  divisions=2
+[primes]   is_prime(27): composite, divisor=3  divisions=1
+[primes]   is_prime(29): PRIME  divisions=2
+[primes]   is_prime(31): PRIME  divisions=2
+[primes]   is_prime(33): composite, divisor=3  divisions=1
+[primes]   is_prime(35): composite, divisor=5  divisions=2
+[primes]   is_prime(37): PRIME  divisions=2
+[primes]   is_prime(39): composite, divisor=3  divisions=1
+[primes]   is_prime(41): PRIME  divisions=2
+[primes]   is_prime(43): PRIME  divisions=2
+[primes]   is_prime(45): composite, divisor=3  divisions=1
+[primes]   is_prime(47): PRIME  divisions=2
+[primes]   is_prime(49): composite, divisor=7  divisions=3
+[primes]   is_prime(51): composite, divisor=3  divisions=1
+[primes]   is_prime(53): PRIME  divisions=3
+[primes]   is_prime(55): composite, divisor=5  divisions=2
+[primes]   is_prime(57): composite, divisor=3  divisions=1
+[primes]   is_prime(59): PRIME  divisions=3
+[primes]   is_prime(61): PRIME  divisions=3
+[primes]   is_prime(63): composite, divisor=3  divisions=1
+[primes]   is_prime(65): composite, divisor=5  divisions=2
+[primes]   is_prime(67): PRIME  divisions=3
+[primes]   is_prime(69): composite, divisor=3  divisions=1
+[primes]   is_prime(71): PRIME  divisions=3
+[primes]   is_prime(73): PRIME  divisions=3
+[primes]   is_prime(75): composite, divisor=3  divisions=1
+[primes]   is_prime(77): composite, divisor=7  divisions=3
+[primes]   is_prime(79): PRIME  divisions=3
+[primes]   is_prime(81): composite, divisor=3  divisions=1
+[primes]   is_prime(83): PRIME  divisions=4
+[primes]   is_prime(85): composite, divisor=5  divisions=2
+[primes]   is_prime(87): composite, divisor=3  divisions=1
+[primes]   is_prime(89): PRIME  divisions=4
+[primes]   is_prime(91): composite, divisor=7  divisions=3
+[primes]   is_prime(93): composite, divisor=3  divisions=1
+[primes]   is_prime(95): composite, divisor=5  divisions=2
+[primes]   is_prime(97): PRIME  divisions=4
+[primes]   is_prime(99): composite, divisor=3  divisions=1
+[primes] END  primes_found=25  subshell_calls=0  divisions=0

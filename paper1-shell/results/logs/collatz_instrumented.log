@@ -1,0 +1,128 @@
+[collatz] START  n=27  pid=42577
+[collatz]   step 0: odd  -> 82
+[collatz]   new max: 82 at step 1
+[collatz]   step 1: even -> 41
+[collatz]   step 2: odd  -> 124
+[collatz]   new max: 124 at step 3
+[collatz]   step 3: even -> 62
+[collatz]   step 4: even -> 31
+[collatz]   step 5: odd  -> 94
+[collatz]   step 6: even -> 47
+[collatz]   step 7: odd  -> 142
+[collatz]   new max: 142 at step 8
+[collatz]   step 8: even -> 71
+[collatz]   step 9: odd  -> 214
+[collatz]   new max: 214 at step 10
+[collatz]   step 10: even -> 107
+[collatz]   step 11: odd  -> 322
+[collatz]   new max: 322 at step 12
+[collatz]   step 12: even -> 161
+[collatz]   step 13: odd  -> 484
+[collatz]   new max: 484 at step 14
+[collatz]   step 14: even -> 242
+[collatz]   step 15: even -> 121
+[collatz]   step 16: odd  -> 364
+[collatz]   step 17: even -> 182
+[collatz]   step 18: even -> 91
+[collatz]   step 19: odd  -> 274
+[collatz]   step 20: even -> 137
+[collatz]   step 21: odd  -> 412
+[collatz]   step 22: even -> 206
+[collatz]   step 23: even -> 103
+[collatz]   step 24: odd  -> 310
+[collatz]   step 25: even -> 155
+[collatz]   step 26: odd  -> 466
+[collatz]   step 27: even -> 233
+[collatz]   step 28: odd  -> 700
+[collatz]   new max: 700 at step 29
+[collatz]   step 29: even -> 350
+[collatz]   step 30: even -> 175
+[collatz]   step 31: odd  -> 526
+[collatz]   step 32: even -> 263
+[collatz]   step 33: odd  -> 790
+[collatz]   new max: 790 at step 34
+[collatz]   step 34: even -> 395
+[collatz]   step 35: odd  -> 1186
+[collatz]   new max: 1186 at step 36
+[collatz]   step 36: even -> 593
+[collatz]   step 37: odd  -> 1780
+[collatz]   new max: 1780 at step 38
+[collatz]   step 38: even -> 890
+[collatz]   step 39: even -> 445
+[collatz]   step 40: odd  -> 1336
+[collatz]   step 41: even -> 668
+[collatz]   step 42: even -> 334
+[collatz]   step 43: even -> 167
+[collatz]   step 44: odd  -> 502
+[collatz]   step 45: even -> 251
+[collatz]   step 46: odd  -> 754
+[collatz]   step 47: even -> 377
+[collatz]   step 48: odd  -> 1132
+[collatz]   step 49: even -> 566
+[collatz]   step 50: even -> 283
+[collatz]   step 51: odd  -> 850
+[collatz]   step 52: even -> 425
+[collatz]   step 53: odd  -> 1276
+[collatz]   step 54: even -> 638
+[collatz]   step 55: even -> 319
+[collatz]   step 56: odd  -> 958
+[collatz]   step 57: even -> 479
+[collatz]   step 58: odd  -> 1438
+[collatz]   step 59: even -> 719
+[collatz]   step 60: odd  -> 2158
+[collatz]   new max: 2158 at step 61
+[collatz]   step 61: even -> 1079
+[collatz]   step 62: odd  -> 3238
+[collatz]   new max: 3238 at step 63
+[collatz]   step 63: even -> 1619
+[collatz]   step 64: odd  -> 4858
+[collatz]   new max: 4858 at step 65
+[collatz]   step 65: even -> 2429
+[collatz]   step 66: odd  -> 7288
+[collatz]   new max: 7288 at step 67
+[collatz]   step 67: even -> 3644
+[collatz]   step 68: even -> 1822
+[collatz]   step 69: even -> 911
+[collatz]   step 70: odd  -> 2734
+[collatz]   step 71: even -> 1367
+[collatz]   step 72: odd  -> 4102
+[collatz]   step 73: even -> 2051
+[collatz]   step 74: odd  -> 6154
+[collatz]   step 75: even -> 3077
+[collatz]   step 76: odd  -> 9232
+[collatz]   new max: 9232 at step 77
+[collatz]   step 77: even -> 4616
+[collatz]   step 78: even -> 2308
+[collatz]   step 79: even -> 1154
+[collatz]   step 80: even -> 577
+[collatz]   step 81: odd  -> 1732
+[collatz]   step 82: even -> 866
+[collatz]   step 83: even -> 433
+[collatz]   step 84: odd  -> 1300
+[collatz]   step 85: even -> 650
+[collatz]   step 86: even -> 325
+[collatz]   step 87: odd  -> 976
+[collatz]   step 88: even -> 488
+[collatz]   step 89: even -> 244
+[collatz]   step 90: even -> 122
+[collatz]   step 91: even -> 61
+[collatz]   step 92: odd  -> 184
+[collatz]   step 93: even -> 92
+[collatz]   step 94: even -> 46
+[collatz]   step 95: even -> 23
+[collatz]   step 96: odd  -> 70
+[collatz]   step 97: even -> 35
+[collatz]   step 98: odd  -> 106
+[collatz]   step 99: even -> 53
+[collatz]   step 100: odd  -> 160
+[collatz]   step 101: even -> 80
+[collatz]   step 102: even -> 40
+[collatz]   step 103: even -> 20
+[collatz]   step 104: even -> 10
+[collatz]   step 105: even -> 5
+[collatz]   step 106: odd  -> 16
+[collatz]   step 107: even -> 8
+[collatz]   step 108: even -> 4
+[collatz]   step 109: even -> 2
+[collatz]   step 110: even -> 1
+[collatz] END  steps=111  even=70  odd=41  max=9232

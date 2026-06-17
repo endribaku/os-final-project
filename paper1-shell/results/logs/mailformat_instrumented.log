@@ -1,0 +1,7 @@
+[mailformat] START  width=70  pid=42733
+[mailformat] line 1: quoted, passthrough (len=22)
+[mailformat] line 2: quoted, passthrough (len=21)
+[mailformat] line 3: input_len=117
+[mailformat]   wrap: emitting line of len=69
+[mailformat]   final segment: len=47 words=20
+[mailformat] END  lines_in=3 words=20 wraps=1

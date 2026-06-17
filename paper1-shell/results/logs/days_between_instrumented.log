@@ -1,0 +1,9 @@
+[days-between] START  date1='1/1/2000'  date2='1/1/2025'  pid=42683
+[days-between]   parse_date: '1/1/2000'
+[days-between]   parsed: mm=1 dd=1 yyyy=2000
+[days-between]   parse_date: '1/1/2025'
+[days-between]   parsed: mm=1 dd=1 yyyy=2025
+[days-between]   iso1=2000-01-01  iso2=2025-01-01
+[days-between]   epoch1=946684800  epoch2=1735689600
+[days-between]   diff_s=789004800  days_raw=9132
+[days-between] END  days=9132

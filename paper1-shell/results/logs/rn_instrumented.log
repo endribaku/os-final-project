@@ -1,0 +1,8 @@
+[rn] START  old='txt'  new='md'  args=2  pid=42785
+[rn]   processing: 'file1.txt'
+[rn]   sed took 0s  base='file1.txt'  ->  'file1.md'
+[rn]   RENAMED
+[rn]   processing: 'file2.txt'
+[rn]   sed took 0s  base='file2.txt'  ->  'file2.md'
+[rn]   RENAMED
+[rn] END  renamed=2  skipped=0

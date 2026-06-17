@@ -115,10 +115,10 @@ perf version 6.17.13
 
 Hardware: CPU model, cores, RAM, storage type.
 
-## Architecture: **aarch64 (ARM64)** — Apple Silicon host running an ARM Ubuntu gu>
+## Architecture: **x86_64** — Intel host running an x86_64 Ubuntu guest in VirtualBox.
 
 Hardware:
-- Host CPU: Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz
+- Host CPU: Intel(R) Core(TM) i7-6820HQ, 2 vCPUs, 4096MB RAM, 20GB VDI
 - vCPUs allocated to VM: 2
 - RAM allocated to VM: 4096 MB (4 GB)
 - Storage: 20 GB VDI on virtio-scsi controller

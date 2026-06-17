@@ -1,0 +1,14 @@
+[blank-rename] START  dir='.'  pid=42821
+[blank-rename]   scanning: 'another file.txt'
+[blank-rename]   has spaces -> 'another_file.txt_'
+Skip (target exists): 'another file.txt'  ->  'another_file.txt_'
+[blank-rename]   SKIPPED (collision)
+[blank-rename]   scanning: 'another_file.txt_'
+[blank-rename]   no spaces, skip
+[blank-rename]   scanning: 'file with spaces.txt'
+[blank-rename]   has spaces -> 'file_with_spaces.txt_'
+Skip (target exists): 'file with spaces.txt'  ->  'file_with_spaces.txt_'
+[blank-rename]   SKIPPED (collision)
+[blank-rename]   scanning: 'file_with_spaces.txt_'
+[blank-rename]   no spaces, skip
+[blank-rename] END  scanned=4  renamed=0  skipped=2

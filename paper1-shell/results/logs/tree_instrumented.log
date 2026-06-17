@@ -1,0 +1,98 @@
+[tree] START  root='/home/vboxuser/os-final-project/paper1-shell'  max_depth=9999  pid=42916
+[tree]   find call #1: dir='/home/vboxuser/os-final-project/paper1-shell'  depth=1
+[tree]   '/home/vboxuser/os-final-project/paper1-shell': 8 entries at depth=1
+[tree]   entering dir 'crt' at depth=2
+[tree]   find call #2: dir='/home/vboxuser/os-final-project/paper1-shell/crt'  depth=2
+[tree]   '/home/vboxuser/os-final-project/paper1-shell/crt': 4 entries at depth=2
+[tree]   file: 'bench_crt.sh'
+[tree]   file: '.gitkeep'
+[tree]   file: 'modular_brute.sh'
+[tree]   file: 'modular_crt.sh'
+[tree]   entering dir 'drivers' at depth=2
+[tree]   find call #3: dir='/home/vboxuser/os-final-project/paper1-shell/drivers'  depth=2
+[tree]   '/home/vboxuser/os-final-project/paper1-shell/drivers': 2 entries at depth=2
+[tree]   file: 'bench_all.py'
+[tree]   file: 'plot_paper1.py'
+[tree]   entering dir 'figures' at depth=2
+[tree]   find call #4: dir='/home/vboxuser/os-final-project/paper1-shell/figures'  depth=2
+[tree]   '/home/vboxuser/os-final-project/paper1-shell/figures': 1 entries at depth=2
+[tree]   file: '.gitkeep'
+[tree]   entering dir 'newtool' at depth=2
+[tree]   find call #5: dir='/home/vboxuser/os-final-project/paper1-shell/newtool'  depth=2
+[tree]   '/home/vboxuser/os-final-project/paper1-shell/newtool': 3 entries at depth=2
+[tree]   file: 'gen_test_log.sh'
+[tree]   file: '.gitkeep'
+[tree]   file: 'logscout.sh'
+[tree]   entering dir 'report' at depth=2
+[tree]   find call #6: dir='/home/vboxuser/os-final-project/paper1-shell/report'  depth=2
+[tree]   '/home/vboxuser/os-final-project/paper1-shell/report': 2 entries at depth=2
+[tree]   file: '.gitkeep'
+[tree]   file: 'OUTLINE.md'
+[tree]   entering dir 'results' at depth=2
+[tree]   find call #7: dir='/home/vboxuser/os-final-project/paper1-shell/results'  depth=2
+[tree]   '/home/vboxuser/os-final-project/paper1-shell/results': 4 entries at depth=2
+[tree]   file: '.gitkeep'
+[tree]   entering dir 'logs' at depth=3
+[tree]   find call #8: dir='/home/vboxuser/os-final-project/paper1-shell/results/logs'  depth=3
+[tree]   '/home/vboxuser/os-final-project/paper1-shell/results/logs': 8 entries at depth=3
+[tree]   file: 'blank_rename_instrumented.log'
+[tree]   file: 'collatz_instrumented.log'
+[tree]   file: 'days_between_instrumented.log'
+[tree]   file: 'mailformat_instrumented.log'
+[tree]   file: 'makedict_instrumented.log'
+[tree]   file: 'primes_instrumented.log'
+[tree]   file: 'rn_instrumented.log'
+[tree]   file: 'tree_instrumented.log'
+[tree]   entering dir 'screenshots' at depth=3
+[tree]   find call #9: dir='/home/vboxuser/os-final-project/paper1-shell/results/screenshots'  depth=3
+[tree]   '/home/vboxuser/os-final-project/paper1-shell/results/screenshots': 0 entries at depth=3
+[tree]   entering dir 'strace' at depth=3
+[tree]   find call #10: dir='/home/vboxuser/os-final-project/paper1-shell/results/strace'  depth=3
+[tree]   '/home/vboxuser/os-final-project/paper1-shell/results/strace': 0 entries at depth=3
+[tree]   entering dir 'scripts' at depth=2
+[tree]   find call #11: dir='/home/vboxuser/os-final-project/paper1-shell/scripts'  depth=2
+[tree]   '/home/vboxuser/os-final-project/paper1-shell/scripts': 3 entries at depth=2
+[tree]   entering dir 'instrumented' at depth=3
+[tree]   find call #12: dir='/home/vboxuser/os-final-project/paper1-shell/scripts/instrumented'  depth=3
+[tree]   '/home/vboxuser/os-final-project/paper1-shell/scripts/instrumented': 11 entries at depth=3
+[tree]   file: 'blank-rename.sh'
+[tree]   file: 'collatz.sh'
+[tree]   file: 'days-between.sh'
+[tree]   file: 'encryptedpw.sh'
+[tree]   file: 'game_of_life.sh'
+[tree]   file: '.gitkeep'
+[tree]   file: 'mailformat.sh'
+[tree]   file: 'makedict.sh'
+[tree]   file: 'primes.sh'
+[tree]   file: 'rn.sh'
+[tree]   file: 'tree.sh'
+[tree]   entering dir 'optimized' at depth=3
+[tree]   find call #13: dir='/home/vboxuser/os-final-project/paper1-shell/scripts/optimized'  depth=3
+[tree]   '/home/vboxuser/os-final-project/paper1-shell/scripts/optimized': 11 entries at depth=3
+[tree]   file: 'blank-rename.sh'
+[tree]   file: 'collatz.sh'
+[tree]   file: 'days-between.sh'
+[tree]   file: 'encryptedpw.sh'
+[tree]   file: 'game_of_life.sh'
+[tree]   file: '.gitkeep'
+[tree]   file: 'mailformat.sh'
+[tree]   file: 'makedict.sh'
+[tree]   file: 'primes.sh'
+[tree]   file: 'rn.sh'
+[tree]   file: 'tree.sh'
+[tree]   entering dir 'original' at depth=3
+[tree]   find call #14: dir='/home/vboxuser/os-final-project/paper1-shell/scripts/original'  depth=3
+[tree]   '/home/vboxuser/os-final-project/paper1-shell/scripts/original': 11 entries at depth=3
+[tree]   file: 'blank-rename.sh'
+[tree]   file: 'collatz.sh'
+[tree]   file: 'days-between.sh'
+[tree]   file: 'encryptedpw.sh'
+[tree]   file: 'game_of_life.sh'
+[tree]   file: '.gitkeep'
+[tree]   file: 'mailformat.sh'
+[tree]   file: 'makedict.sh'
+[tree]   file: 'primes.sh'
+[tree]   file: 'rn.sh'
+[tree]   file: 'tree.sh'
+[tree]   file: 'VIRTUALBOX_TASKS.md'
+[tree] END  dirs=13  files=55  find_calls=14
