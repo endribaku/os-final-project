@@ -49,7 +49,7 @@ paper1:
 
   # Per-script knobs (only used by scripts that take these).
   collatz_seeds:             [27, 97, 871, 6171, 27114424]
-  game_of_life_generations:  [10, 50, 200]
+  game_of_life_generations:  [5, 10, 20]
   mailformat_line_widths:    [40, 70, 120]
   days_between_pairs:
     - ["1/1/1900",  "1/1/2000"]
