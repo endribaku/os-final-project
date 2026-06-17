@@ -56,14 +56,24 @@ command in §8 reads it automatically.
 ## 3. Front matter template
 
 Replace `YOUR NAME` with your own name in CAPS. Everything else is fixed.
+Each of the byline, affiliation, and email lines lives in its own
+`::: {custom-style="Front Matter"} … :::` Div — the custom style centers
+them, matching the sample paper exactly.
 
 ```markdown
 # Your Paper Title Here (mixed case, no all-caps)
 
+::: {custom-style="Front Matter"}
 YOUR NAME
+:::
 
+::: {custom-style="Front Matter"}
 *Epoka University, Faculty of Architecture and Engineering, Tirana, Albania*
+:::
+
+::: {custom-style="Front Matter"}
 *(email: yourusername@epoka.edu.al)*
+:::
 
 ::: {custom-style="Summary Heading"}
 SUMMARY
@@ -78,9 +88,8 @@ a full stop
 ```
 
 Notes:
-- The `::: {custom-style="Summary Heading"} SUMMARY :::` block uses a custom
-  paragraph style that's already defined in `config/reference-10pt.docx`. It
-  centers just SUMMARY; the regular section headings stay left-aligned.
+- Both `Front Matter` and `Summary Heading` are custom paragraph styles
+  defined in `config/reference-10pt.docx`. They render centered.
 - Don't add a "Date", "Course", "Author:" label, or reproducibility line in
   the front matter. The sample paper doesn't have them.
 
